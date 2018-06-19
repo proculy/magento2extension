@@ -1,0 +1,79 @@
+<?php
+
+/**
+ * @var \Vvc\Task\Block\Alltasklist $block
+ */
+
+echo '<B>'.$block->sayHello().'</B>';
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Task List</title>
+	<style>
+		table {  font-family: arial, sans-serif;  border-collapse: collapse;  width: 100%;  margin-top: 30px;}
+		td, th {  border: 1px solid #dddddd;  text-align: left;  padding: 8px;  }
+		tr:nth-child(even) { background-color: #dddddd; }
+		.task-id{width:2%} .task-name{width:10%} .task-content{width: 10%} .start-date{width: 10%}
+        .end-date{width: 10%} .status{width: 4%} .assign-to{width: 10%} .progress{width: 5%}
+        .description{width: 10%} .priority{width: 4%} .created-at{width: 10%} .update-at{width: 10%}
+        .created-by{width: 10%} .updated-by{width: 10%}
+
+	</style>
+    <script type="text/javascript">
+        function Update(id){
+            location.href = "<?php echo $block->getUpdateActionLink(); ?>"+"id/"+id;
+        }
+        function BackTask(){
+        	location.href = "<?php echo $block->getBackTaskActionLink(); ?>";	
+        }
+        function ViewChart(){
+        	location.href = "<?php echo $block->getViewChartActionLink(); ?>";
+        }
+    </script>
+</head>
+<body>
+<br>
+<button type="button" title="Update" onclick="BackTask();"><span>Back</span></button>
+<button type="button" title="Update" onclick="ViewChart();"><span>Chart</span></button>
+<table>
+  <tr>
+    <th class="task-id">Task ID</th>
+    <th class="task-name">Task Name</th>
+    <th class="task-content">Task Content</th>
+    <th class="start-date">Start Date</th>
+    <th class="end-date">End Date</th>
+    <th class="status">Status</th>
+    <th class="assign-to">Assign To</th>
+    <th class="progress">Progress</th>
+    <th class="description">Description</th>
+    <th class="priority">Priority</th>
+    <th class="created-at">Created At</th>
+    <th class="updated-at">Updated At</th>
+    <th class="created-by">Created By</th>
+    <th class="updated-by">Updated By</th>
+  </tr>
+    <?php
+        foreach ($block->getTaskCollection() as $key=>$task){
+            echo '<tr>
+                    <td id="'.$task->getTask_id().'1">'.$task->getTask_id().'</td>
+                    <td id="'.$task->getTask_id().'2">'.$task->getTask_name().'</td>
+                    <td id="'.$task->getTask_id().'3">'.$task->getTask_content().'</td>
+                    <td id="'.$task->getTask_id().'1">'.$task->getStart_date().'</td>
+                    <td id="'.$task->getTask_id().'2">'.$task->getEnd_date().'</td>
+                    <td id="'.$task->getTask_id().'3">'.$block->getStatusName($task->getStatus()).'</td>
+                    <td id="'.$task->getTask_id().'1">'.$task->getFirstname().' '.$task->getLastname().'</td>
+                    <td id="'.$task->getTask_id().'2">'.$task->getProgress().'</td>
+                    <td id="'.$task->getTask_id().'3">'.$task->getDescription().'</td>
+                    <td id="'.$task->getTask_id().'1">'.$block->getPriorityName($task->getPriority()).'</td>
+                    <td id="'.$task->getTask_id().'2">'.$task->getCreated_at().'</td>
+                    <td id="'.$task->getTask_id().'3">'.$task->getUpdate_at().'</td>
+                    <td id="'.$task->getTask_id().'2">'.$task->getAdcrefirstname().' '.$task->getAdcrelastname().'</td>
+                    <td id="'.$task->getTask_id().'3">'.$task->getAdupdfirstname().' '.$task->getAdupdlastname().'</td>
+                  </tr>';
+        }
+    ?>
+</table>
+</body>
+</html>

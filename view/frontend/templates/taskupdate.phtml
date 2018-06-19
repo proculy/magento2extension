@@ -1,0 +1,244 @@
+<?php
+/**
+ * @var \Vvc\Task\Block\Taskupdate $block
+ */
+ $task = $block->getTaskCollectionbyId();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>UpdateTask</title>
+  <script>
+  require(['jquery'], function($){
+
+    $(document).ready(function () {
+        $('#enquiry_mirror').change(function () {
+            $('#enquiry').val($(this).val());
+        });
+    });
+
+  });
+  require(['jquery'],function($){
+      $(document).ready(function() {
+          $("#priority_mirror > [value="+$('#priority').val()+"]").attr("selected", "true");
+      });
+  });
+
+  require(['jquery'],function($){
+      $(document).ready(function() {
+          $("#enquiry_mirror > [value="+$('#enquiry').val()+"]").attr("selected", "true");
+      });
+  });
+
+  require(['jquery','mage/mage'],function($){
+      var dataForm = $('#form');
+      dataForm.mage('validation', {});
+  });
+  </script>
+</head>
+<body>
+  <form class="form" action="<?php echo $block->getActionName()?>" method="post" id="form">
+
+      <fieldset class="fieldset">
+          <legend class="legend"><span><?php /* @escapeNotVerified */ echo __('Update task') ?></span></legend><br>
+          <div class="field required">
+              <label for="number" class="label">
+                  <span><?php /* @escapeNotVerified */ echo __('Task ID') ?></span>
+              </label>
+
+              <div class="control">
+                  <input type="text" id="task_id" readonly="true"
+                         name="task_id"
+                         class="input-text"
+                         value="<?php echo $task->getTask_id();?>">
+              </div>
+          </div>
+          <div class="field required">
+              <label for="number" class="label">
+                  <span><?php /* @escapeNotVerified */ echo __('Task Name') ?></span>
+              </label>
+
+              <div class="control">
+                  <input type="text" id="task_name" readonly="true"
+                         name="task_name"
+                         class="input-text" 
+                         value="<?php echo $task->getTask_name();?>">
+              </div>
+          </div>
+          <div class="field required">
+              <label for="number" class="label">
+                  <span><?php /* @escapeNotVerified */ echo __('Task Content') ?></span>
+              </label>
+
+              <div class="control">
+                  <input type="text" id="task_content" readonly="true"
+                         name="task_content"
+                         class="input-text"
+                         value="<?php echo $task->getTask_content();?>">
+              </div>
+          </div>
+          <div class="">
+              <label for="number" class="label">
+                  <span><?php /* @escapeNotVerified */ echo __('Start Date') ?></span>
+              </label>
+
+              <div class="control">
+                  <input type="text" id="start_date" readonly="true"
+                         name="start_date"
+                         class="input-text"
+                         value="<?php echo $task->getStart_date();?>">
+              </div>
+          </div>
+          <div class="">
+              <label for="number" class="label">
+                  <span><?php /* @escapeNotVerified */ echo __('End Date') ?></span>
+              </label>
+
+              <div class="control">
+                  <input type="text" id="end_date" readonly="true"
+                         name="end_date"
+                         class="input-text"
+                         value="<?php echo $task->getEnd_date();?>">
+              </div>
+          </div>
+          <div class="">
+              <label for="number" class="label">
+                  <span><?php /* @escapeNotVerified */ echo __('Status') ?></span>
+              </label>
+
+              <div class="control">
+                  <input type="text" id="enquiry"
+                         name="status"
+                         class="input-text"
+                         hidden="true"
+                         value="<?php echo $task->getStatus();?>">
+                  <select name="enquiry" id="enquiry_mirror" value="<?php echo $task->getStatus();?>">
+                        <option value="0">not start</option>
+                        <option value="1">start</option>
+                        <option value="2">in progress</option>
+                        <option value="3">end</option>
+                  </select>
+              </div>
+          </div>
+          <div class="">
+              <label for="number" class="label">
+                  <span><?php /* @escapeNotVerified */ echo __('Assign To') ?></span>
+              </label>
+
+              <div class="control">
+                  <input type="text" id="assign_to" readonly="true"
+                         name="assign_to"
+                         class="input-text"
+                         value="<?php echo $task->getFirstname()." ".$task->getLastname();?>">
+              </div>
+          </div>
+          <div class="">
+              <label for="number" class="label">
+                  <span><?php /* @escapeNotVerified */ echo __('Progress') ?></span>
+              </label>
+
+              <div class="control">
+                  <input  class="field required" type="number" id="progress"
+                         name="progress"
+                         class="input-text"
+                         value="<?php echo $task->getProgress();?>"
+                         data-validate='{
+                                    "validate-number": true,
+                                    "validate-number-range": "0.0001-99999999.9999"
+                                    }'/>
+              </div>
+          </div>
+          <div class="">
+              <label for="number" class="label">
+                  <span><?php /* @escapeNotVerified */ echo __('Description') ?></span>
+              </label>
+
+              <div class="control">
+                  <input type="text" id="description"
+                         name="description"
+                         class="input-text"
+                         value="<?php echo $task->getDescription();?>">
+              </div>
+          </div>
+          <div class="">
+              <label for="number" class="label">
+                  <span><?php /* @escapeNotVerified */ echo __('Priority') ?></span>
+              </label>
+
+              <div class="control">
+                  <input type="text" id="priority" readonly="true"
+                         name="priority"
+                         class="input-text"
+                         hidden="true"
+                         value="<?php echo $task->getPriority();?>">
+              </div>
+              <select name="priority" id="priority_mirror" disabled="true">
+                        <option value="0">hight</option>
+                        <option value="1">normal</option>
+                        <option value="2">low</option>
+              </select>
+          </div>
+          <div class="">
+              <label for="number" class="label">
+                  <span><?php /* @escapeNotVerified */ echo __('Created At') ?></span>
+              </label>
+
+              <div class="control">
+                  <input type="text" id="created_at" readonly="true"
+                         name="created_at"
+                         class="input-text"
+                         value="<?php echo $task->getCreate_at();?>">
+              </div>
+          </div>
+          <div class="">
+              <label for="number" class="label">
+                  <span><?php /* @escapeNotVerified */ echo __('Updated At') ?></span>
+              </label>
+
+              <div class="control">
+                  <input type="text" id="updated_at" readonly="true"
+                         name="updated_at"
+                         class="input-text"
+                         value="<?php echo $task->getUpdate_at();?>">
+              </div>
+          </div>
+          <div class="">
+              <label for="number" class="label">
+                  <span><?php /* @escapeNotVerified */ echo __('Created By') ?></span>
+              </label>
+
+              <div class="control">
+                  <input type="text" id="created_by" readonly="true"
+                         name="created_by"
+                         class="input-text"
+                         value="<?php echo $task->getAdcrefirstname()." ". $task->getAdcrelastname();?>">
+              </div>
+          </div>
+          <div class="">
+              <label for="number" class="label">
+                  <span><?php /* @escapeNotVerified */ echo __('Updated By') ?></span>
+              </label>
+
+              <div class="control">
+                  <input type="text" id="updated_by" readonly="true"
+                         name="updated_by"
+                         class="input-text"
+                         value="<?php echo $task->getAdupdfirstname()." ".$task->getAdupdlastname();?>">
+              </div>
+          </div>
+      </fieldset>
+
+      <div class="actions-toolbar">
+          <div class="primary">
+              <button type="submit" class="action submit primary" title="<?php /* @escapeNotVerified */ echo __('Submit') ?>">
+                  <span><?php /* @escapeNotVerified */ echo __('Submit') ?></span>
+              </button>
+          </div>
+      </div>
+
+  </form>
+</body>
+</html>
+
+
+

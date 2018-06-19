@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+	    <css src="Vvc_Task::css/test.css"/>
+	</head>
+	<body>
+	    <referenceContainer name="content">
+	<!--         <block class="Vvc\Task\Block\Tasklist" cacheable="false" name="display_task" template="Vvc_Task::tasklist.phtml" /> -->
+	        	<block class="Vvc\Task\Block\Headergird" cacheable="false" name="task_display" template="Vvc_Task::headergird.phtml"/>
+		        <uiComponent name="vvc_task_managetask_frontend"  cacheable="false"/>
+	    </referenceContainer>
+	</body>
+</page>

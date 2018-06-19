@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+ 
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:Magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="task_email_template" label="Test email" file="sendtaskmail/emailtask.html" type="html" module="Vvc_Task" area="frontend"/>
+</config>

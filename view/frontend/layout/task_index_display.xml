@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+	    <css src="Vvc_Task::css/task.css"/>
+	    <css src="Vvc_Task::css/jsgantt.css"/>
+	    <css src="Vvc_Task::css/test.css"/>
+	</head>
+    <body>
+	    <referenceContainer name="content">
+	        <block class="Vvc\Task\Block\Display" cacheable="false" name="task_display" template="Vvc_Task::taskchart.phtml" />
+	    </referenceContainer>
+    </body>
+</page>

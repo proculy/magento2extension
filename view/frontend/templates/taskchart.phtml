@@ -1,0 +1,32 @@
+<?php
+    /**
+     * @var \Mageplaza\HelloWorld\Block\Display $block
+     */
+      echo "<h1 class='page-title'>".$block->initTask()."</h1>";
+?>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'taskchart',
+        'domReady!'
+    ], function($, taskchart) {
+      var cusTaskArr = <?php echo json_encode($block->getCustomerTaskCollection()) ?>;
+      taskchart.printHTML(cusTaskArr);
+    });
+    function ViewTask(){
+      location.href = "<?php echo $block->getViewTaskActionLink(); ?>"; 
+    }
+    function ViewChart(){
+      location.href = "<?php echo $block->getViewChartActionLink(); ?>";
+    }
+</script>
+<html>
+    <body>
+        <br>
+        <button type="button" class="action- scalable primary" title="Update" onclick="ViewTask();" ><span>Task List</span></button>
+        <button type="button" class="action- scalable primary" title="Update" onclick="ViewChart();" disabled="true"><span>Chart</span></button>
+        <br>
+        <br>
+        <div style="position:relative" class="gantt" id="TaskDiv"></div>
+    </body>
+</html>

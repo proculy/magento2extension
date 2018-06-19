@@ -1,0 +1,15 @@
+<script>
+    require([
+        'jquery',
+        'taskchart',
+        'domReady!'
+    ], function($, taskchart) {
+      var cusTaskArr = <?php echo json_encode($block->getCustomerTaskCollection()) ?>;
+      taskchart.printHTML(cusTaskArr);
+    });
+</script>
+<html>
+    <body>
+        <div style="position:relative" class="gantt" id="TaskDiv"></div>
+    </body>
+</html>

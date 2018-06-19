@@ -1,0 +1,29 @@
+<?php
+  /**
+   * @var \Mageplaza\HelloWorld\Block\Headergird $block
+   */
+  echo "<h1 class='page-title'>".$block->sayHello()."</h1>";
+?>
+<style type="text/css">
+  
+</style>
+
+<script type="text/javascript">
+        function Update(id){
+            location.href = "<?php echo $block->getUpdateActionLink(); ?>"+"id/"+id;
+        }
+        function ViewTask(){
+          location.href = "<?php echo $block->getViewTaskActionLink(); ?>"; 
+        }
+        function ViewChart(){
+          location.href = "<?php echo $block->getViewChartActionLink(); ?>";
+        }
+</script>
+
+<html>
+  <body>
+    <br>
+    <button type="button" class="action- scalable primary" title="Update" onclick="ViewTask();" disabled="true"><span>Task List</span></button>
+    <button type="button" class="action- scalable primary" title="Update" onclick="ViewChart();"><span>Chart</span></button>
+  </body>
+</html>

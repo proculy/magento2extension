@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Vvc_Task::task_menu" title="Task" translate="title" module="Vvc_Task" sortOrder="40" parent="Vvc_Task::vvc_menu"  resource="Vvc_Task::task_menu"/>
+        <add id="Vvc_Task::managetask" title="Manage Task" module="Vvc_Task" sortOrder="60" parent="Vvc_Task::task_menu" action="vvc_task/managetask" resource="Vvc_Task::managetask"/>
+        <add id="Vvc_Task::chart" title="Overview" module="Vvc_Task" sortOrder="70" parent="Vvc_Task::task_menu" action="vvc_task/chart" resource="Vvc_Task::chart"/>
+    </menu>
+</config>

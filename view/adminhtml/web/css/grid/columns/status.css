@@ -1,0 +1,12 @@
+.notstart{
+    background-color: rgb(253, 5, 5) !important;
+}
+.start{
+    background-color: rgb(236, 233, 55) !important;
+}
+.inprogress{
+    background-color: rgb(203, 248, 172) !important;
+}
+.done{
+    background-color: rgb(4, 247, 146) !important;
+}

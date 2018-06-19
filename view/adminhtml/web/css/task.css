@@ -1,0 +1,32 @@
+.table_task th {
+	background-color: gray;
+	color: white;
+}
+
+.table_task {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.table_task td, th {
+	border: 1px solid #dddddd;
+	text-align: left;
+	padding: 8px;
+}
+
+.table_task tr:nth-child(even) {
+	background-color: #dddddd;
+}
+
+#GanttChartDIVchartTable, #GanttChartDIVchartTableh {
+	width: auto !important;
+}
+
+.gtasktableh tr td,
+.gtasktable tr td,
+#GanttChartDIVchartTable tr td,
+#GanttChartDIVchartTableh tr td {
+	vertical-align: middle !important;
+}
